@@ -1,3 +1,4 @@
+/* Estilos gerais */
 body {
     background-image: url(./assets/assets/bg-mobile.jpg);
     background-repeat: no-repeat;
@@ -9,12 +10,13 @@ h1 {
     color: #ffffff;
 }
 
+/* Seções de vantagens */
 #vantagens-principais {
     color: white; /* Cor branca para o texto */
 }
 
 #vantagens-principais ul {
-    list-style-type: none; /* Remove os marcadores de lista (os pontos) */
+    list-style-type: none; /* Remove os marcadores de lista */
 }
 
 #vantagens-contratar {
@@ -22,7 +24,6 @@ h1 {
     color: #ffffff;
     padding: 20px;
     border-radius: 5px;
-    /* Usar apenas 'max-width' é mais flexível para o design responsivo. */
     max-width: 50%;
 }
 
@@ -36,40 +37,66 @@ ion-icon {
 }
 
 #vantagens-contratar li {
-    display: flex; /* Alinha o ícone e o texto na mesma linha */
-    align-items: center; /* Centraliza verticalmente o ícone e o texto */
-    margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 #vantagens-contratar ion-icon {
-    margin-right: 10px; /* Espaçamento entre o ícone e o texto */
-    font-size: 1.2em; /* Tamanho do ícone (ajuste conforme necessário) */
+    margin-right: 10px;
+    font-size: 1.2em;
 }
 
-/*
- * Este novo seletor 'conteudo-flex' é o que realmente faz a mágica de
- * posicionar a lista e a imagem lado a lado.
-*/
+/* Container do Flexbox */
 .conteudo-flex {
-    display: flex; /* Habilita o Flexbox */
-    justify-content: center; /* Centraliza a lista e a imagem horizontalmente */
-    align-items: center; /* Alinha os itens ao centro verticalmente */
-    gap: 30px; /* Adiciona um espaço entre a lista e a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
-/*
- * O Flexbox do contêiner pai agora gerencia o posicionamento,
- * então as propriedades de Flexbox foram removidas daqui para evitar redundância.
-*/
 .perfil-container {
     margin-bottom: 20px;
 }
 
 .imagem-ao-lado {
-    /*
-     * As larguras fixas foram removidas para tornar a imagem responsiva.
-     * 'max-width: 100%' e 'height: auto' garantem que a imagem se ajuste ao contêiner.
-    */
     max-width: 100%;
     height: auto;
+}
+
+/*
+* Estilização do botão fixo do WhatsApp
+*/
+.button-whatsapp {
+    /* Posiciona o container na tela */
+    position: fixed;
+    bottom: 50px; /* Distância da parte inferior da tela */
+    left: 50%; /* Move o ponto de origem para o meio da tela */
+    transform: translateX(-50%); /* Ajusta o elemento para que o centro dele fique no 50% */
+    
+    /* Habilita o Flexbox para alinhar o conteúdo interno */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+}
+
+.whatsapp-icon-button {
+    font-size: 4em;
+    color: #25d366;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.whatsapp-icon-button:hover {
+    color: #128c7e;
+    transform: scale(1.1);
+}
+
+.whatsapp-icon-button:active {
+    transform: scale(0.95);
+}
+
+.whatsapp-text {
+    color: #ffffff;
+    font-size: 1em; /* Tamanho do texto ajustado para ser mais prático */
 }
