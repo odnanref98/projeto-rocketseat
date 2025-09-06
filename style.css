@@ -1,30 +1,45 @@
-/* Estilos gerais */
+/*
+---
+Estilos base e Mobile-First (padrão para telas menores que 768px)
+---
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+}
+
 body {
     background-image: url(./assets/assets/bg-mobile.jpg);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 20px;
 }
 
 h1 {
     color: #ffffff;
+    text-align: center;
+    padding-bottom: 20px;
 }
 
-/* Seções de vantagens */
 #vantagens-principais {
-    color: white; /* Cor branca para o texto */
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-#vantagens-principais ul {
-    list-style-type: none; /* Remove os marcadores de lista */
+#vantagens-principais p {
+    line-height: 1.5;
 }
 
 #vantagens-contratar {
-    background-color: #8d3fdb10; 
+    background-color: #8d3fdb10;
     color: #ffffff;
     padding: 20px;
     border-radius: 5px;
-    max-width: 50%;
 }
 
 ion-icon {
@@ -32,7 +47,7 @@ ion-icon {
 }
 
 #vantagens-contratar ul {
-    list-style-type: none; /* Remove os marcadores padrão da lista */
+    list-style-type: none;
     padding-left: 0;
 }
 
@@ -45,14 +60,16 @@ ion-icon {
 #vantagens-contratar ion-icon {
     margin-right: 10px;
     font-size: 1.2em;
+    flex-shrink: 0; 
 }
 
-/* Container do Flexbox */
 .conteudo-flex {
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     gap: 30px;
+    padding-bottom: 80px;
 }
 
 .perfil-container {
@@ -62,41 +79,121 @@ ion-icon {
 .imagem-ao-lado {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /*
-* Estilização do botão fixo do WhatsApp
-*/
-.button-whatsapp {
-    /* Posiciona o container na tela */
-    position: fixed;
-    bottom: 50px; /* Distância da parte inferior da tela */
-    left: 50%; /* Move o ponto de origem para o meio da tela */
-    transform: translateX(-50%); /* Ajusta o elemento para que o centro dele fique no 50% */
-    
-    /* Habilita o Flexbox para alinhar o conteúdo interno */
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o ícone e o texto */
-}
-
+ * Estilização do botão fixo do WhatsApp
+ * As correções de alinhamento e estilo estão aqui.
+ */
 .whatsapp-icon-button {
-    font-size: 4em;
+    position: fixed;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+    
+    font-size: 3em;
     color: #25d366;
     text-decoration: none;
     transition: transform 0.2s ease, color 0.2s ease;
+    
+    white-space: nowrap; 
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px; 
+    border-radius: 30px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .whatsapp-icon-button:hover {
     color: #128c7e;
-    transform: scale(1.1);
+    transform: translateX(-50%) scale(1.1);
 }
 
 .whatsapp-icon-button:active {
-    transform: scale(0.95);
+    transform: translateX(-50%) scale(0.95);
 }
 
 .whatsapp-text {
     color: #ffffff;
-    font-size: 1em; /* Tamanho do texto ajustado para ser mais prático */
+    font-size: 0.7em; 
+    line-height: 1; 
+    margin: 0; 
+    display: inline-block; 
+}
+
+---
+### Otimização para Desktop
+---
+/*
+ * Media query para telas a partir de 768px (tablets e desktops)
+ */
+@media (min-width: 768px) {
+    /* Limita a largura do conteúdo principal e centraliza na tela */
+    #main-content {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .conteudo-flex {
+        flex-direction: row;
+        align-items: flex-start;
+        padding-bottom: 40px;
+    }
+
+    #vantagens-contratar {
+        max-width: 50%;
+        padding: 30px;
+    }
+
+    .perfil-container {
+        max-width: 50%;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imagem-ao-lado {
+        max-width: 400px;
+    }
+
+    /*
+     * Ajustes para o botão do WhatsApp no desktop
+     */
+    .whatsapp-icon-button {
+        bottom: 30px; 
+        left: auto;
+        right: 30px; 
+        transform: none;
+        font-size: 4em;
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .whatsapp-icon-button:hover {
+        transform: scale(1.1);
+    }
+
+    .whatsapp-icon-button:active {
+        transform: scale(0.95);
+    }
+
+    .whatsapp-text {
+        display: none; 
+    }
+}
+
+/* Media query para telas a partir de 1200px (desktops grandes) */
+@media (min-width: 1200px) {
+    #main-content {
+        max-width: 1140px;
+    }
 }
